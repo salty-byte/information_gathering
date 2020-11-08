@@ -1,0 +1,2 @@
+SLACK_URL = 【SLACK_URL】;
+BOT_NAME = 'GAS_Bot';
