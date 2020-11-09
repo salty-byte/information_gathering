@@ -1,6 +1,6 @@
-class SecurityNextApp extends BaseApp{
+class ITmediaApp extends BaseApp{
   constructor() {
-    super("Security Next", "https://www.security-next.com/feed");
+    super("ITmedia", "https://rss.itmedia.co.jp/rss/2.0/news_security.xml");
   }
 
   create() {
@@ -23,7 +23,7 @@ class SecurityNextApp extends BaseApp{
     const response = UrlFetchApp.fetch(this.url);
     const regexp = /<item>([\s\S]*?)<\/item>/gi;
     const result = response.getContentText().match(regexp);
-    
+
     const dataList = [];
     for (let i in result) {
       const text = result[i];

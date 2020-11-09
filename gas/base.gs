@@ -15,7 +15,22 @@ class BaseApp{
   }
 
   create() {}
-  upload() {}
+
+  upload() {
+    const sheet = this.getSheet();
+    let message = `【${this.name}】\n`;
+    for (let i = 1; i <= sheet.getLastRow(); i++) {
+      const title = sheet.getRange(i, 2).getDisplayValue();
+      const url = sheet.getRange(i, 3).getDisplayValue();
+      const isSent = sheet.getRange(i, 4).getDisplayValue();
+      if (isSent == '〇') {
+        break;
+      }
+      sheet.getRange(i, 4).setValue('〇');
+      message += `${title}:\n${url}\n`
+    }
+    postToSlack(message);
+  }
 }
 
 class Data{
