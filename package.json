@@ -1,0 +1,36 @@
+{
+  "name": "information_gathering",
+  "version": "0.1.0a",
+  "description": "gathering information: e.g. seurity news, twitter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "deploy": "npm run build && clasp push",
+    "watch": "webpack -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salty-byte/information_gathering.git"
+  },
+  "author": "salty-byte",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/salty-byte/information_gathering/issues"
+  },
+  "homepage": "https://github.com/salty-byte/information_gathering#readme",
+  "devDependencies": {
+    "@google/clasp": "^2.3.0",
+    "@types/google-apps-script": "^1.0.17",
+    "gas-webpack-plugin": "^1.2.0",
+    "prettier": "^2.1.2",
+    "ts-loader": "^8.0.11",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.3.0",
+    "typescript": "^4.0.5",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.2.0"
+  },
+  "dependencies": {}
+}
