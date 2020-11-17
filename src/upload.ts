@@ -1,6 +1,6 @@
-import {BOT_NAME, SLACK_URL} from './settings';
+import { BOT_NAME, SLACK_URL } from './settings';
 
-export function postToSlack(message = 'no message') {
+export function postToSlack(message = 'no message'): void {
   const jsonData = {
     username: BOT_NAME,
     text: message,

@@ -1,7 +1,7 @@
-import {createInfos, uploadInfos} from './main'
+import { createInfos, uploadInfos } from './main';
 
 declare const global: {
-  [x: string]: any;
+  [x: string]: () => void;
 };
 
 global.createInfos = () => createInfos();
