@@ -11,7 +11,7 @@ export abstract class BaseApp {
   }
 
   clear(): void {
-    this.getSheet()?.clear();
+    this.getSheet().clear();
   }
 
   getSheet(sheetName = this.name): GoogleAppsScript.Spreadsheet.Sheet {

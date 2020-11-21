@@ -4,7 +4,7 @@ export const regexpOr = (
   index = 0,
   substitute = ''
 ): string => {
-  const result = target?.match(regExp);
+  const result = target.match(regExp);
   if (result && result.length > index) {
     return result[index];
   }
