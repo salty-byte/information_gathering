@@ -1,4 +1,4 @@
-export const regexpOr = (
+export const regExpOr = (
   target: string,
   regExp: RegExp,
   index = 0,

@@ -1,5 +1,5 @@
 import { postToSlack } from '../upload';
-import { regexpOr } from '../helpers/stringHelpers';
+import { regExpOr } from '../helpers/stringHelpers';
 
 export abstract class BaseApp {
   protected name: string;
@@ -49,9 +49,9 @@ export abstract class BaseApp {
 
     const dataList: AppData[] = [];
     for (const text of results) {
-      const title = regexpOr(text, /<title>([\s\S]+?)<\/title>/, 1);
-      const url = regexpOr(text, /<link>([\s\S]+?)<\/link>/, 1);
-      const date = regexpOr(text, /<pubDate>([\s\S]+?)<\/pubDate>/, 1);
+      const title = regExpOr(text, /<title>([\s\S]+?)<\/title>/, 1);
+      const url = regExpOr(text, /<link>([\s\S]+?)<\/link>/, 1);
+      const date = regExpOr(text, /<pubDate>([\s\S]+?)<\/pubDate>/, 1);
       dataList.push({ date, title, url });
     }
     return dataList;
