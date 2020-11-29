@@ -1,6 +1,19 @@
-import { regExpOr } from '../../src/helpers/stringHelpers';
+import {
+  decodeEntityReferences,
+  regExpOr,
+} from '../../src/helpers/stringHelpers';
 
 describe('stringHelpers test', () => {
+  describe('decodeEntityReferences test', () => {
+    test('returns the decoded string', async () => {
+      const r1 = decodeEntityReferences('abc&#x30b5;&#x30f3;&#x30d7;&#x30eb;');
+      expect(r1).toBe('abcサンプル');
+
+      const r2 = decodeEntityReferences('!"#$%&\'(&#x6f22;-&#x5b57;)&#xgh@;');
+      expect(r2).toBe('!"#$%&\'(漢-字)&#xgh@;');
+    });
+  });
+
   describe('regExpOr test', () => {
     const xmlText = `
       <title>title</title>
