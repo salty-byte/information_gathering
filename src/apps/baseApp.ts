@@ -10,11 +10,9 @@ export abstract class BaseApp {
     this.url = url;
   }
 
-  clear(): void {
-    this.getSheet().clear();
-  }
-
-  getSheet(sheetName = this.name): GoogleAppsScript.Spreadsheet.Sheet {
+  protected getSheet(
+    sheetName = this.name
+  ): GoogleAppsScript.Spreadsheet.Sheet {
     const activeSheet = SpreadsheetApp.getActiveSpreadsheet();
     let sheet = activeSheet.getSheetByName(sheetName);
     if (!sheet) {
@@ -57,7 +55,7 @@ export abstract class BaseApp {
     return dataList;
   }
 
-  removeDuplicate(dataList: AppData[]): AppData[] {
+  protected removeDuplicate(dataList: AppData[]): AppData[] {
     const sheet = this.getSheet();
     const limit = Math.min(100, sheet.getLastRow());
     return dataList.filter((data) => {
