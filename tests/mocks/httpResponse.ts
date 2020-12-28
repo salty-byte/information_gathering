@@ -10,7 +10,7 @@ const xmlArray = [
           <language>ja</language>
           <pubDate>Sun, 29 Nov 2020 00:00:00 +0900</pubDate>
           <item>
-            <title>タイトル１く</title>
+            <title>タイトル１</title>
             <link>https://example.com/itmedia/1</link>
             <description>説明１</description>
             <pubDate>Fri, 27 Nov 2020 00:00:00 +0900</pubDate>

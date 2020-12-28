@@ -37,7 +37,7 @@ export abstract class BaseApp {
     }
   }
 
-  fetchData(): AppData[] {
+  protected fetchData(): AppData[] {
     const response = UrlFetchApp.fetch(this.url);
     const regexp = /<item>([\s\S]*?)<\/item>/gi;
     const results = response.getContentText().match(regexp);

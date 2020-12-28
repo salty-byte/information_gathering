@@ -1,6 +1,19 @@
 export class MockSpreadSheet {
+  private data: Map<string, MockSheet>;
+
+  constructor() {
+    this.data = new Map();
+  }
+
   getSheetByName(name: string): MockSheet {
-    return new MockSheet(name);
+    if (!this.data.has(name)) {
+      this.data.set(name, new MockSheet(name));
+    }
+    return this.data.get(name);
+  }
+
+  clear(): void {
+    this.data.clear();
   }
 }
 
@@ -13,12 +26,26 @@ export class MockSheet {
     this.data = new Map();
   }
 
-  insertRows(): void {
-    this.data.set(0, new Map());
+  insertRows(row: number, line: number): void {
+    const newData = new Map();
+    for (let i = 1; i < row; i++) {
+      if (this.data.has(i)) {
+        newData.set(i, this.data.get(i));
+      }
+    }
+    for (let i = 0; i < line; i++) {
+      newData.set(row + i, new Map());
+    }
+    for (let i = row; i < this.getLastRow(); i++) {
+      if (this.data.has(i)) {
+        newData.set(i + line, this.data.get(i));
+      }
+    }
+    this.data = newData;
   }
 
   getLastRow(): number {
-    return Math.max(...this.data.keys()) + 1;
+    return Math.max(...this.data.keys(), 0);
   }
 
   getRange(row: number, column: number): MockRange {
