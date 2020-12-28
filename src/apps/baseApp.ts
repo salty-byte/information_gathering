@@ -3,11 +3,11 @@ import { regExpOr } from '../helpers/stringHelpers';
 
 export abstract class BaseApp {
   protected name: string;
-  protected url: string;
+  protected urls: string[];
 
-  constructor(name = 'base', url = 'http://example.com') {
+  constructor(name = 'base', urls: string | string[]) {
     this.name = name;
-    this.url = url;
+    this.urls = Array.isArray(urls) ? urls : [urls];
   }
 
   protected getSheet(
@@ -22,7 +22,7 @@ export abstract class BaseApp {
   }
 
   create(): void {
-    const dataList = this.removeDuplicate(this.fetchData());
+    const dataList = this.removeDuplicate(this.fetchDataList());
     if (!dataList.length) {
       return;
     }
@@ -37,22 +37,31 @@ export abstract class BaseApp {
     }
   }
 
-  protected fetchData(): AppData[] {
-    const response = UrlFetchApp.fetch(this.url);
+  protected fetchDataList(): AppData[] {
+    const dataMap = new Map<string, AppData>();
+    for (const url of this.urls) {
+      const data = this.fetchData(url);
+      data.forEach((v) => dataMap.set(v.url, v));
+    }
+    return Array.from(dataMap.values());
+  }
+
+  protected fetchData(url: string): AppData[] {
+    const response = UrlFetchApp.fetch(url);
     const regexp = /<item>([\s\S]*?)<\/item>/gi;
     const results = response.getContentText().match(regexp);
     if (!results) {
       return [];
     }
 
-    const dataList: AppData[] = [];
+    const data: AppData[] = [];
     for (const text of results) {
       const title = regExpOr(text, /<title>([\s\S]+?)<\/title>/, 1);
       const url = regExpOr(text, /<link>([\s\S]+?)<\/link>/, 1);
       const date = regExpOr(text, /<pubDate>([\s\S]+?)<\/pubDate>/, 1);
-      dataList.push({ date, title, url });
+      data.push({ date, title, url });
     }
-    return dataList;
+    return data;
   }
 
   protected removeDuplicate(dataList: AppData[]): AppData[] {

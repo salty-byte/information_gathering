@@ -1,10 +1,18 @@
-import { BaseApp } from './apps/baseApp';
-import { ITmediaApp } from './apps/itmediaApp';
-import { SecurityNextApp } from './apps/securityNextApp';
-import { TheHackerNewsApp } from './apps/theHackerNewsApp';
+import {
+  BaseApp,
+  HatenaBookmarkApp,
+  ITmediaApp,
+  SecurityNextApp,
+  TheHackerNewsApp,
+} from './apps/index';
 
 function getAppList(): BaseApp[] {
-  return [new SecurityNextApp(), new ITmediaApp(), new TheHackerNewsApp()];
+  return [
+    new HatenaBookmarkApp(),
+    new SecurityNextApp(),
+    new ITmediaApp(),
+    new TheHackerNewsApp(),
+  ];
 }
 
 export function createInfos(): void {

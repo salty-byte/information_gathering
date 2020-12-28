@@ -6,8 +6,8 @@ export class TheHackerNewsApp extends BaseApp {
     super('TheHackerNews', 'https://feeds.feedburner.com/TheHackersNews');
   }
 
-  fetchData(): AppData[] {
-    const response = UrlFetchApp.fetch(this.url);
+  fetchData(url: string): AppData[] {
+    const response = UrlFetchApp.fetch(url);
     const regexp = /<item>([\s\S]*?)<\/item>/gi;
     const results = response.getContentText().match(regexp);
     if (!results) {
