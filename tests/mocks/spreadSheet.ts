@@ -33,14 +33,17 @@ export class MockSheet {
         newData.set(i, this.data.get(i));
       }
     }
+
     for (let i = 0; i < line; i++) {
       newData.set(row + i, new Map());
     }
-    for (let i = row; i < this.getLastRow(); i++) {
+
+    for (let i = row; i <= this.getLastRow(); i++) {
       if (this.data.has(i)) {
         newData.set(i + line, this.data.get(i));
       }
     }
+
     this.data = newData;
   }
 
