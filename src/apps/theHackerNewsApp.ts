@@ -3,7 +3,7 @@ import { regExpOr } from '../helpers/stringHelpers';
 
 export class TheHackerNewsApp extends BaseApp {
   constructor() {
-    super('TheHackersNews', 'https://feeds.feedburner.com/TheHackersNews');
+    super('TheHackerNews', 'https://feeds.feedburner.com/TheHackersNews');
   }
 
   fetchData(): AppData[] {

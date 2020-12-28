@@ -67,19 +67,19 @@ const xmlArray = [
           </image>
           <item>
             <title>Title1</title>
-            <link>https://example.com/the-hackers-news/1</link>
+            <link>https://burner.example.com/1</link>
             <pubDate>Fri, 27 Nov 2020 00:00:00 PST</pubDate>
             <description>Description1</description>
             <media:thumbnail url="/media1.jpg" height="72" width="72" />
-            <feedburner:origLink>/burner2</feedburner:origLink>
+            <feedburner:origLink>https://example.com/the-hackers-news/1</feedburner:origLink>
           </item>
           <item>
             <title>Title2</title>
-            <link>https://example.com/the-hackers-news/2</link>
+            <link>https://burner.example.com/2</link>
             <pubDate>Thu, 26 Nov 2020 00:00:00 PST</pubDate>
             <description>Description2</description>
             <media:thumbnail url="/media2.jpg" height="72" width="72" />
-            <feedburner:origLink>/burner2</feedburner:origLink>
+            <feedburner:origLink>https://example.com/the-hackers-news/2</feedburner:origLink>
           </item>
         </channel>
       </rss>`,
