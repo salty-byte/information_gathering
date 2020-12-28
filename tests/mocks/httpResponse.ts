@@ -43,7 +43,7 @@ const xmlArray = [
           <item>
             <title>タイトル２</title>
             <link>https://example.com/security-next/2</link>
-            <pubDate>, 26 Nov 2020 00:00:00 +0000</pubDate>
+            <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
             <description>説明２</description>
           </item>
         </channel>
