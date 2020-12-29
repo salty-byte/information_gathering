@@ -7,7 +7,7 @@ export class HatenaBookmarkApp extends BaseApp {
   constructor() {
     super('HatenaBookmark', [
       'https://b.hatena.ne.jp/hotentry.rss',
-      'http://b.hatena.ne.jp/hotentry/it.rss',
+      'https://b.hatena.ne.jp/hotentry/it.rss',
     ]);
     this.securityTags = ['セキュリティ', 'security'];
   }
@@ -41,6 +41,7 @@ export class HatenaBookmarkApp extends BaseApp {
     const tags = [...text.matchAll(/<dc:subject>([\s\S]+?)<\/dc:subject>/gi)];
     return tags
       .filter((v) => v && v.length >= 2)
-      .some((v) => this.securityTags.includes(v[1]));
+      .map((v) => decodeEntityReferences(v[1]))
+      .some((v) => this.securityTags.includes(v));
   }
 }

@@ -84,6 +84,46 @@ const xmlArray = [
         </channel>
       </rss>`,
   },
+  {
+    startUrl: 'https://b.hatena.ne.jp/',
+    content: `<?xml version="1.0" encoding="UTF-8"?>
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+        <channel rdf:about="https://example.com">
+        <title>Title</title>
+        <link>https://example.com/it</link>
+        <description>Description</description>
+        <items>
+          <rdf:Seq>
+            <rdf:li rdf:resource="https://example.com/resource" />
+          </rdf:Seq>
+        </items>
+        </channel>
+        <item rdf:about="https://example.com/hatena/1">
+          <title>&#x30BF;&#x30A4;&#x30C8;&#x30EB;&#xFF11;</title>
+          <link>https://example.com/hatena/1</link>
+          <description>&#x8AAC;&#x660E;&#xFF11;</description>
+          <dc:date>2020-12-28T00:00:00Z</dc:date>
+          <dc:subject>&#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;</dc:subject>
+          <dc:subject>test1</dc:subject>
+        </item>
+        <item rdf:about="https://example.com/hatena/2">
+          <title>&#x30BF;&#x30A4;&#x30C8;&#x30EB;&#xFF12;</title>
+          <link>https://example.com/hatena/2</link>
+          <description>&#x8AAC;&#x660E;&#xFF12;</description>
+          <dc:date>2020-12-27T00:00:00Z</dc:date>
+          <dc:subject>security</dc:subject>
+          <dc:subject>test2</dc:subject>
+        </item>
+        <item rdf:about="https://example.com/hatena/3">
+          <title>&#x30BF;&#x30A4;&#x30C8;&#x30EB;&#xFF13;</title>
+          <link>https://example.com/hatena/3</link>
+          <description>&#x8AAC;&#x660E;&#xFF13;</description>
+          <dc:date>2020-12-26T00:00:00Z</dc:date>
+          <dc:subject>no-security</dc:subject>
+          <dc:subject>test2</dc:subject>
+        </item>
+      </rdf:RDF>`,
+  },
 ];
 
 export class MockHTTPResponse {

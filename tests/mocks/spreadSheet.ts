@@ -6,10 +6,12 @@ export class MockSpreadSheet {
   }
 
   getSheetByName(name: string): MockSheet {
-    if (!this.data.has(name)) {
-      this.data.set(name, new MockSheet(name));
+    let sheet = this.data.get(name);
+    if (!sheet) {
+      sheet = new MockSheet(name);
+      this.data.set(name, sheet);
     }
-    return this.data.get(name);
+    return sheet;
   }
 
   clear(): void {
