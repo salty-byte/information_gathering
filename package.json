@@ -8,9 +8,10 @@
     "deploy": "npm run build && clasp push",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "test": "jest",
-    "watch": "webpack -w",
-    "watch:test": "jest --watch"
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:coveralls": "jest --coverage && coveralls < coverage/lcov.info",
+    "watch": "webpack -w"
   },
   "repository": {
     "type": "git",
