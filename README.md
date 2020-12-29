@@ -2,10 +2,16 @@
 
 ## Requires
 
-* Nodejs: 14.x
+- Nodejs: 14.x
 
 ## Installs
 
 ```shell
-npm install .
+npm install
+```
+
+## Tests
+
+```shell
+npm run test
 ```

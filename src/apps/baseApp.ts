@@ -10,11 +10,9 @@ export abstract class BaseApp {
     this.urls = Array.isArray(urls) ? urls : [urls];
   }
 
-  clear(): void {
-    this.getSheet().clear();
-  }
-
-  getSheet(sheetName = this.name): GoogleAppsScript.Spreadsheet.Sheet {
+  protected getSheet(
+    sheetName = this.name
+  ): GoogleAppsScript.Spreadsheet.Sheet {
     const activeSheet = SpreadsheetApp.getActiveSpreadsheet();
     let sheet = activeSheet.getSheetByName(sheetName);
     if (!sheet) {
@@ -39,7 +37,7 @@ export abstract class BaseApp {
     }
   }
 
-  fetchDataList(): AppData[] {
+  protected fetchDataList(): AppData[] {
     const dataMap = new Map<string, AppData>();
     for (const url of this.urls) {
       const data = this.fetchData(url);
@@ -48,7 +46,7 @@ export abstract class BaseApp {
     return Array.from(dataMap.values());
   }
 
-  fetchData(url: string): AppData[] {
+  protected fetchData(url: string): AppData[] {
     const response = UrlFetchApp.fetch(url);
     const regexp = /<item>([\s\S]*?)<\/item>/gi;
     const results = response.getContentText().match(regexp);
@@ -66,7 +64,7 @@ export abstract class BaseApp {
     return data;
   }
 
-  removeDuplicate(dataList: AppData[]): AppData[] {
+  protected removeDuplicate(dataList: AppData[]): AppData[] {
     const sheet = this.getSheet();
     const limit = Math.min(100, sheet.getLastRow());
     return dataList.filter((data) => {
