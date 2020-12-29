@@ -1,5 +1,8 @@
 # information_gathering
 
+[![tests](https://github.com/salty-byte/information_gathering/workflows/test/badge.svg)](https://github.com/salty-byte/information_gathering/actions?workflow=test)
+[![Coverage Status](https://coveralls.io/repos/github/salty-byte/information_gathering/badge.svg?branch=main)](https://coveralls.io/github/salty-byte/information_gathering?branch=main)
+
 To gather information such as security news using [Google Apps Script](https://developers.google.com/apps-script/) and [Google Spreadsheet](https://developers.google.com/apps-script/reference/spreadsheet).
 Developed by [clasp](https://github.com/google/clasp).
 
@@ -45,7 +48,7 @@ npm install
 ## Tests
 
 ```shell
-npm run test
+npm test
 ```
 
 ## License
