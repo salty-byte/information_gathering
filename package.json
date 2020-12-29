@@ -10,7 +10,6 @@
     "lint:fix": "eslint src --fix",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "test:coveralls": "jest --coverage && coveralls < coverage/lcov.info",
     "watch": "webpack -w"
   },
   "repository": {
