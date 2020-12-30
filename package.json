@@ -4,13 +4,13 @@
   "description": "gathering information: e.g. security news, twitter",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "deploy": "npm run build && clasp push",
+    "build": "NODE_ENV=development webpack --mode development",
+    "deploy": "NODE_ENV=production webpack --mode production && clasp push",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "watch": "webpack -w"
+    "watch": "NODE_ENV=development webpack --mode development --watch"
   },
   "repository": {
     "type": "git",
