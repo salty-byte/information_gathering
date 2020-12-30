@@ -20,6 +20,12 @@ npx clasp login
 
 Then enable the Google Apps Script API: https://script.google.com/home/usersettings
 
+**Create Sheet:**
+
+```shell
+npx clasp create --type sheets --rootDir ./dist
+```
+
 **Deploy:**
 
 ```shell
