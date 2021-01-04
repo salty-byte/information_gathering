@@ -42,7 +42,9 @@ export class UCCardApp extends BaseApp {
   }
 
   private createUrl(path: string) {
-    const target = 'https://www2.uccard.co.jp';
-    return `${target}${path.replace(target, '')}`;
+    const target = path.trim();
+    return path.startsWith('http')
+      ? target
+      : `https://www2.uccard.co.jp${target}`;
   }
 }
