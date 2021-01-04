@@ -1,8 +1,14 @@
-import { createInfos, uploadInfos } from './main';
+import * as main from './main';
 
 declare const global: {
   [x: string]: () => void;
 };
 
-global.createInfos = () => createInfos();
-global.uploadInfos = () => uploadInfos();
+global.createInfoAll = () => main.createInfoAll();
+global.uploadInfoAll = () => main.uploadInfoAll();
+
+global.execHatenaBlog = () => main.execHatenaBlog();
+global.execHatenaBookmark = () => main.execHatenaBookmark();
+global.execITmedia = () => main.execITmedia();
+global.execSecurityNext = () => main.execSecurityNext();
+global.execTheHackerNews = () => main.execTheHackerNews();
