@@ -1,5 +1,6 @@
 import {
   BaseApp,
+  HatenaBlogApp,
   HatenaBookmarkApp,
   ITmediaApp,
   SecurityNextApp,
@@ -9,6 +10,7 @@ import {
 
 function getAppList(): BaseApp[] {
   return [
+    new HatenaBlogApp(),
     new HatenaBookmarkApp(),
     new SecurityNextApp(),
     new ITmediaApp(),
