@@ -4,6 +4,7 @@ import {
   ITmediaApp,
   SecurityNextApp,
   TheHackerNewsApp,
+  UCCardApp,
 } from './apps/index';
 
 function getAppList(): BaseApp[] {
@@ -12,6 +13,7 @@ function getAppList(): BaseApp[] {
     new SecurityNextApp(),
     new ITmediaApp(),
     new TheHackerNewsApp(),
+    new UCCardApp(),
   ];
 }
 

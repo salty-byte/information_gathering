@@ -124,6 +124,32 @@ const xmlArray = [
         </item>
       </rdf:RDF>`,
   },
+  {
+    startUrl: 'https://www2.uccard.co.jp/',
+    content: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+      <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+          <title>Title</title>
+        </head>
+        <body>
+          <h1>重要なお知らせ</h1>
+          <div class="contents_detail spnSection">
+            <h2><span>2020年</span></h2>
+            <dl class="clearfix">
+              <dt>2020年12月20日</dt>
+              <dd><a href="/uccard/1" target="_blank">タイトル１</a></dd>
+              <dt>2020年12月19日</dt>
+              <dd><a href="/uccard/2" target="_blank">タイトル２   <img alt="" src="/title2.img" /></a></dd>
+            </dl>
+            <h2><span>2019年</span></h2>
+            <dl class="clearfix">
+              <dt>2019年11月25日</dt>
+              <dd><a href="/uccard/3" target="_blank">タイトル３</a></dd>
+            </dl>
+          </div>
+        </body>
+      </html>`,
+  },
 ];
 
 export class MockHTTPResponse {
