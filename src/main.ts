@@ -62,3 +62,9 @@ export const execTheHackerNews = (): void => {
   app.create();
   app.upload();
 };
+
+export const execUCCard = (): void => {
+  const app = new UCCardApp();
+  app.create();
+  app.upload();
+};
