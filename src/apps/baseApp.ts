@@ -2,6 +2,10 @@ import { postToSlack } from '../upload';
 import { regExpOr } from '../helpers/stringHelpers';
 
 export abstract class BaseApp {
+  static readonly STATUS_NEW = 'new';
+  static readonly STATUS_UPLOADING = 'uploading';
+  static readonly STATUS_UPLOADED = 'uploaded';
+
   protected name: string;
   protected urls: string[];
 
@@ -34,6 +38,7 @@ export abstract class BaseApp {
       sheet.getRange(i, 1).setValue(data.date);
       sheet.getRange(i, 2).setValue(data.title);
       sheet.getRange(i, 3).setValue(data.url);
+      sheet.getRange(i, 4).setValue(BaseApp.STATUS_NEW);
     }
   }
 
@@ -82,19 +87,31 @@ export abstract class BaseApp {
     const sheet = this.getSheet();
     const messages: string[] = [];
     for (let i = 1; i <= sheet.getLastRow(); i++) {
-      const title = sheet.getRange(i, 2).getDisplayValue();
-      const url = sheet.getRange(i, 3).getDisplayValue();
-      const isSent = sheet.getRange(i, 4).getDisplayValue();
-      if (isSent == '〇') {
+      const status = sheet.getRange(i, 4).getDisplayValue();
+      if (status === BaseApp.STATUS_UPLOADED) {
         break;
       }
-      sheet.getRange(i, 4).setValue('〇');
+      const title = sheet.getRange(i, 2).getDisplayValue();
+      const url = sheet.getRange(i, 3).getDisplayValue();
       messages.push(`${title}:\n${url}`);
+      sheet.getRange(i, 4).setValue(BaseApp.STATUS_UPLOADING);
     }
 
-    if (messages.length) {
-      const message = `【${this.name}】\n${messages.join('\n')}`;
-      postToSlack(message);
+    if (!messages.length) {
+      return;
+    }
+
+    const message = `【${this.name}】\n${messages.join('\n')}`;
+    postToSlack(message);
+
+    for (let i = 1; i <= sheet.getLastRow(); i++) {
+      const status = sheet.getRange(i, 4).getDisplayValue();
+      if (status === BaseApp.STATUS_UPLOADED) {
+        break;
+      }
+      if (status === BaseApp.STATUS_UPLOADING) {
+        sheet.getRange(i, 4).setValue(BaseApp.STATUS_UPLOADED);
+      }
     }
   }
 }
