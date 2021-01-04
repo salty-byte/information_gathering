@@ -26,7 +26,7 @@ describe('UCCard test', () => {
         'https://www2.uccard.co.jp/important/'
       );
 
-      expect(sheet.getLastRow()).toBe(3);
+      expect(sheet.getLastRow()).toBe(2);
       expect(sheet.getRange(1, 1).getDisplayValue()).toBe('2020年12月20日');
       expect(sheet.getRange(1, 2).getDisplayValue()).toBe('タイトル１');
       expect(sheet.getRange(1, 3).getDisplayValue()).toBe(
@@ -36,11 +36,6 @@ describe('UCCard test', () => {
       expect(sheet.getRange(2, 2).getDisplayValue()).toBe('タイトル２');
       expect(sheet.getRange(2, 3).getDisplayValue()).toBe(
         'https://www2.uccard.co.jp/uccard/2'
-      );
-      expect(sheet.getRange(3, 1).getDisplayValue()).toBe('2019年11月25日');
-      expect(sheet.getRange(3, 2).getDisplayValue()).toBe('タイトル３');
-      expect(sheet.getRange(3, 3).getDisplayValue()).toBe(
-        'https://www2.uccard.co.jp/uccard/3'
       );
     });
 
@@ -58,25 +53,20 @@ describe('UCCard test', () => {
       const app = new UCCardApp();
       app.create();
 
-      expect(sheet.getLastRow()).toBe(4);
+      expect(sheet.getLastRow()).toBe(3);
       expect(sheet.getRange(1, 1).getDisplayValue()).toBe('2020年12月19日');
       expect(sheet.getRange(1, 2).getDisplayValue()).toBe('タイトル２');
       expect(sheet.getRange(1, 3).getDisplayValue()).toBe(
         'https://www2.uccard.co.jp/uccard/2'
       );
-      expect(sheet.getRange(2, 1).getDisplayValue()).toBe('2019年11月25日');
-      expect(sheet.getRange(2, 2).getDisplayValue()).toBe('タイトル３');
+      expect(sheet.getRange(2, 1).getDisplayValue()).toBe('2020年12月22日');
+      expect(sheet.getRange(2, 2).getDisplayValue()).toBe('タイトル１');
       expect(sheet.getRange(2, 3).getDisplayValue()).toBe(
-        'https://www2.uccard.co.jp/uccard/3'
-      );
-      expect(sheet.getRange(3, 1).getDisplayValue()).toBe('2020年12月22日');
-      expect(sheet.getRange(3, 2).getDisplayValue()).toBe('タイトル１');
-      expect(sheet.getRange(3, 3).getDisplayValue()).toBe(
         'https://www2.uccard.co.jp/uccard/1'
       );
-      expect(sheet.getRange(4, 1).getDisplayValue()).toBe('2020年12月24日');
-      expect(sheet.getRange(4, 2).getDisplayValue()).toBe('新タイトル');
-      expect(sheet.getRange(4, 3).getDisplayValue()).toBe(
+      expect(sheet.getRange(3, 1).getDisplayValue()).toBe('2020年12月24日');
+      expect(sheet.getRange(3, 2).getDisplayValue()).toBe('新タイトル');
+      expect(sheet.getRange(3, 3).getDisplayValue()).toBe(
         'https://www2.uccard.co.jp/uccard/new'
       );
     });
@@ -97,8 +87,6 @@ describe('UCCard test', () => {
         'https://www2.uccard.co.jp/uccard/1',
         'タイトル２:',
         'https://www2.uccard.co.jp/uccard/2',
-        'タイトル３:',
-        'https://www2.uccard.co.jp/uccard/3',
       ];
       expect(postSpy).toHaveBeenCalledWith(`${messages.join('\n')}`);
     });
