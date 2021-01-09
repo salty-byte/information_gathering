@@ -1,4 +1,5 @@
 import { MockSheet } from './sheet';
+import { MockTextFinder } from './textFinder';
 
 describe('MockRange test', () => {
   describe('insertRows test', () => {
@@ -50,6 +51,13 @@ describe('MockRange test', () => {
       const sheet = new MockSheet('test');
       sheet.getRange(2, 4).setValue('new range');
       expect(sheet.getRange(2, 4).getDisplayValue()).toBe('new range');
+    });
+  });
+
+  describe('createTextFinder test', () => {
+    test('returns a new text finder', async () => {
+      const sheet = new MockSheet('test');
+      expect(sheet.createTextFinder('text')).toBeInstanceOf(MockTextFinder);
     });
   });
 });

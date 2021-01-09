@@ -73,13 +73,8 @@ export abstract class BaseApp {
     const sheet = this.getSheet();
     const limit = Math.min(100, sheet.getLastRow());
     return dataList.filter((data) => {
-      for (let i = 1; i <= limit; i++) {
-        const title = sheet.getRange(i, 2).getDisplayValue();
-        if (data.title === title) {
-          return false;
-        }
-      }
-      return true;
+      const result = sheet.createTextFinder(data.title).getCurrentMatch();
+      return !result || result.getRow() > limit;
     });
   }
 

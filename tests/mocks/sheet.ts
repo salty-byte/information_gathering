@@ -1,4 +1,5 @@
 import { MockRange } from './range';
+import { MockTextFinder } from './textFinder';
 
 export class MockSheet {
   private _name: string;
@@ -51,10 +52,14 @@ export class MockSheet {
 
     let range = rowData.get(column);
     if (!range) {
-      range = new MockRange();
+      range = new MockRange(row, column);
       rowData.set(column, range);
     }
 
     return range;
+  }
+
+  createTextFinder(findText: string): MockTextFinder {
+    return new MockTextFinder(this, findText);
   }
 }

@@ -13,7 +13,7 @@ describe('httpResponse test', () => {
     });
 
     test('returns empty when the url is not matching', async () => {
-      const response = new MockHTTPResponse('https://example.com/');
+      const response = new MockHTTPResponse('https://not-match.example.com/');
       expect(response.getContentText()).toBe('');
     });
   });
