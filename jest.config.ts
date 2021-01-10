@@ -8,6 +8,7 @@ export default {
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
   globals: {
+    PropertiesService: {},
     SpreadsheetApp: {},
     UrlFetchApp: {},
   },
@@ -16,5 +17,5 @@ export default {
   transform: {
     '^.+\\.ts?$': 'ts-jest',
   },
-  verbose: true
+  verbose: true,
 };

@@ -1,5 +1,9 @@
 const xmlArray = [
   {
+    startUrl: 'https://test.example.com/',
+    content: '<html>test</html>',
+  },
+  {
     startUrl: 'https://rss.itmedia.co.jp/',
     content: `<?xml version="1.0" encoding="utf-8" ?>
       <rss version="2.0">
@@ -123,6 +127,77 @@ const xmlArray = [
           <dc:subject>test2</dc:subject>
         </item>
       </rdf:RDF>`,
+  },
+  {
+    startUrl: 'https://www2.uccard.co.jp/',
+    content: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+      <html xmlns="http://www.w3.org/1999/xhtml">
+        <head>
+          <title>Title</title>
+        </head>
+        <body>
+          <h1>重要なお知らせ</h1>
+          <div class="contents_detail spnSection">
+            <h2><span>2020年</span></h2>
+            <dl class="clearfix">
+              <dt>2020年12月20日</dt>
+              <dd><a href="/uccard/1" target="_blank">タイトル１</a></dd>
+              <dt>2020年12月19日</dt>
+              <dd><a href="/uccard/2" target="_blank">タイトル２   <img alt="" src="/title2.img" /></a></dd>
+            </dl>
+            <h2><span>2019年</span></h2>
+            <dl class="clearfix">
+              <dt>2019年11月25日</dt>
+              <dd><a href="/uccard/3" target="_blank">タイトル３</a></dd>
+            </dl>
+          </div>
+        </body>
+      </html>`,
+  },
+  {
+    startUrl: 'https://example.com/hatena-1/',
+    content: `<?xml version="1.0"?>
+      <rss version="2.0">
+        <channel>
+          <title>タイトル</title>
+          <link>https://example.com/</link>
+          <description>説明</description>
+          <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0900</lastBuildDate>
+          <item>
+            <title>タイトル１</title>
+            <link>https://example.com/hatena-1/1</link>
+            <description>説明１</description>
+            <pubDate>Mon, 28 Dec 2020 00:00:00 +0900</pubDate>
+            <category>test1</category>
+          </item>
+          <item>
+            <title>タイトル２</title>
+            <link>https://example.com/hatena-1/2</link>
+            <description>説明２</description>
+            <pubDate>Sun, 27 Dec 2020 00:00:00 +0900</pubDate>
+            <category>test2</category>
+          </item>
+        </channel>
+      </rss>`,
+  },
+  {
+    startUrl: 'https://example.com/hatena-2/',
+    content: `<?xml version="1.0"?>
+      <rss version="2.0">
+        <channel>
+          <title>タイトル</title>
+          <link>https://example.com/</link>
+          <description>説明</description>
+          <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0900</lastBuildDate>
+          <item>
+            <title>タイトル３</title>
+            <link>https://example.com/hatena-2/1</link>
+            <description>説明１</description>
+            <pubDate>Mon, 28 Dec 2020 00:00:00 +0900</pubDate>
+            <category>test1</category>
+          </item>
+        </channel>
+      </rss>`,
   },
 ];
 
