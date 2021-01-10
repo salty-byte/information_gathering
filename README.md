@@ -40,8 +40,8 @@ npm run deploy
 
 **Run functions in Apps Script:**
 
-- createInfos
-- uploadInfos
+- createInfoAll
+- uploadInfoAll
 - execSecurityNext
 - execHatenaBlog
 - execHatenaBookmark
@@ -51,11 +51,11 @@ npm run deploy
 
 ### Details: functions in Apps Script
 
-- createInfos
+- createInfoAll
 
   - Get the data from each website and write it to spreadsheets.
 
-- uploadInfos
+- uploadInfoAll
 
   - Send the data written in the spreadsheets to Slack.
 
