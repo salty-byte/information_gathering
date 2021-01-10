@@ -73,7 +73,7 @@ export abstract class BaseApp {
     const sheet = this.getSheet();
     const limit = Math.min(100, sheet.getLastRow());
     return dataList.filter((data) => {
-      const result = sheet.createTextFinder(data.title).getCurrentMatch();
+      const result = sheet.createTextFinder(data.title).findNext();
       return !result || result.getRow() > limit;
     });
   }
