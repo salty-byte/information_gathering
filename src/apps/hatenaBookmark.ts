@@ -15,10 +15,13 @@ export class HatenaBookmarkApp extends BaseApp {
   fetchData(url: string): AppData[] {
     const response = UrlFetchApp.fetch(url);
     const regexp = /<item[^>]*>([\s\S]*?)<\/item>/gi;
-    const results = response.getContentText().match(regexp);
+    let results = response.getContentText().match(regexp);
     if (!results) {
       return [];
     }
+
+    // get item limit
+    results = results.slice(0, this.itemLimit);
 
     const dataList: AppData[] = [];
     for (const text of results) {

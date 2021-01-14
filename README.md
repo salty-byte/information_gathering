@@ -90,6 +90,14 @@ npm run deploy
 
   - Get the data about `UCカード 重要なお知らせ` and send it to Slack.
 
+- execRSS2
+
+  - Get the data format `RSS2.0` and send it to Slack.
+
+  - Needs: set a script property `RSS2_URLS` if you want to get information using this function
+    Set the URLs separated by commas.  
+    ex. `https://XXX.com/rss,https://YYY.jp/rss`
+
 ## Test
 
 ```shell
