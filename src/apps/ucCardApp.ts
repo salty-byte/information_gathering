@@ -3,7 +3,6 @@ import { regExpOr } from '../helpers/stringHelpers';
 
 export class UCCardApp extends BaseApp {
   static readonly BASE_URL = 'https://www2.uccard.co.jp';
-  static readonly ITEM_LIMIT = 10;
 
   constructor() {
     super('UCCard', `${UCCardApp.BASE_URL}/important/`);
@@ -24,7 +23,7 @@ export class UCCardApp extends BaseApp {
     }
 
     // get item limit
-    results = results.slice(0, UCCardApp.ITEM_LIMIT);
+    results = results.slice(0, this.itemLimit);
 
     const dataList: AppData[] = [];
     for (const text of results) {
