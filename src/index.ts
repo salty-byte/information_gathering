@@ -13,3 +13,5 @@ global.execITmedia = () => main.execITmedia();
 global.execSecurityNext = () => main.execSecurityNext();
 global.execTheHackerNews = () => main.execTheHackerNews();
 global.execUCCard = () => main.execUCCard();
+
+global.execRSS2 = () => main.execRSS2();
