@@ -199,51 +199,6 @@ const xmlArray = [
         </channel>
       </rss>`,
   },
-  {
-    startUrl: 'https://example.com/rss2-1/',
-    content: `<?xml version="1.0"?>
-      <rss version="2.0">
-        <channel>
-          <title>サイト１</title>
-          <link>https://example.com/</link>
-          <description>説明</description>
-          <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0900</lastBuildDate>
-          <item>
-            <title>タイトル１</title>
-            <link>https://example.com/rss2-1/1</link>
-            <description>説明１</description>
-            <pubDate>Mon, 28 Dec 2020 00:00:00 +0900</pubDate>
-            <category>test1</category>
-          </item>
-          <item>
-            <title>タイトル２</title>
-            <link>https://example.com/rss2-1/2</link>
-            <description>説明２</description>
-            <pubDate>Sun, 27 Dec 2020 00:00:00 +0900</pubDate>
-            <category>test2</category>
-          </item>
-        </channel>
-      </rss>`,
-  },
-  {
-    startUrl: 'https://example.com/rss2-2/',
-    content: `<?xml version="1.0"?>
-      <rss version="2.0">
-        <channel>
-          <title>サイト２</title>
-          <link>https://example.com/</link>
-          <description>説明</description>
-          <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0900</lastBuildDate>
-          <item>
-            <title>タイトル３</title>
-            <link>https://example.com/rss2-2/1</link>
-            <description>説明１</description>
-            <pubDate>Mon, 28 Dec 2020 00:00:00 +0900</pubDate>
-            <category>test1</category>
-          </item>
-        </channel>
-      </rss>`,
-  },
 ];
 
 export class MockHTTPResponse {

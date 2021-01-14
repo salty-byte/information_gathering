@@ -2,6 +2,8 @@ import { BaseApp } from './baseApp';
 import { decodeEntityReferences, regExpOr } from '../helpers/stringHelpers';
 
 export class HatenaBlogApp extends BaseApp {
+  static readonly ITEM_LIMIT = 5;
+
   constructor() {
     const urls = HatenaBlogApp.readUrls();
     super('HatenaBlog', urls);
@@ -26,7 +28,7 @@ export class HatenaBlogApp extends BaseApp {
     }
 
     // get item limit
-    results = results.slice(0, this.itemLimit);
+    results = results.slice(0, HatenaBlogApp.ITEM_LIMIT);
 
     const dataList: AppData[] = [];
     for (const text of results) {

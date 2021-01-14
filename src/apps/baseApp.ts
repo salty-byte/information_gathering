@@ -8,12 +8,10 @@ export abstract class BaseApp {
 
   protected name: string;
   protected urls: string[];
-  protected itemLimit = 5;
 
-  constructor(name = 'base', urls: string | string[], itemLimit = 5) {
+  constructor(name = 'base', urls: string | string[]) {
     this.name = name;
     this.urls = Array.isArray(urls) ? urls : [urls];
-    this.itemLimit = itemLimit;
   }
 
   protected getSheet(
@@ -56,22 +54,19 @@ export abstract class BaseApp {
   protected fetchData(url: string): AppData[] {
     const response = UrlFetchApp.fetch(url);
     const regexp = /<item>([\s\S]*?)<\/item>/gi;
-    let results = response.getContentText().match(regexp);
+    const results = response.getContentText().match(regexp);
     if (!results) {
       return [];
     }
 
-    // get item limit
-    results = results.slice(0, this.itemLimit);
-
-    const dataList: AppData[] = [];
+    const data: AppData[] = [];
     for (const text of results) {
       const title = regExpOr(text, /<title>([\s\S]+?)<\/title>/, 1);
       const url = regExpOr(text, /<link>([\s\S]+?)<\/link>/, 1);
       const date = regExpOr(text, /<pubDate>([\s\S]+?)<\/pubDate>/, 1);
-      dataList.push({ date, title, url });
+      data.push({ date, title, url });
     }
-    return dataList;
+    return data;
   }
 
   protected removeDuplicate(dataList: AppData[]): AppData[] {
