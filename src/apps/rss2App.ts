@@ -1,4 +1,5 @@
 import { BaseApp } from './baseApp';
+import { splitAndTrim } from '../helpers/stringHelpers';
 
 export class RSS2App extends BaseApp {
   constructor() {
@@ -9,9 +10,6 @@ export class RSS2App extends BaseApp {
   private static readUrls(): string[] {
     const urlStr =
       PropertiesService.getScriptProperties().getProperty('RSS2_URLS') || '';
-    return urlStr
-      .split(',')
-      .map((v) => v.trim())
-      .filter(Boolean);
+    return splitAndTrim(urlStr, ',');
   }
 }
