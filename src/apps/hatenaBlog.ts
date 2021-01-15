@@ -1,5 +1,9 @@
 import { BaseApp } from './baseApp';
-import { decodeEntityReferences, regExpOr } from '../helpers/stringHelpers';
+import {
+  decodeEntityReferences,
+  regExpOr,
+  splitAndTrim,
+} from '../helpers/stringHelpers';
 
 export class HatenaBlogApp extends BaseApp {
   constructor() {
@@ -11,10 +15,7 @@ export class HatenaBlogApp extends BaseApp {
     const urlStr =
       PropertiesService.getScriptProperties().getProperty('HATENA_BLOG_URLS') ||
       '';
-    return urlStr
-      .split(',')
-      .map((v) => v.trim())
-      .filter(Boolean);
+    return splitAndTrim(urlStr, ',');
   }
 
   fetchData(url: string): AppData[] {
