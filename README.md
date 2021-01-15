@@ -70,7 +70,7 @@ npm run deploy
 
   - Get the data about `はてなブログ` and send it to Slack.
 
-  - Needs: set a script property `HATENA_BLOG_URLS` if you want to get information about Hatena blogs  
+  - Needs: set a script property `HATENA_BLOG_URLS`  
     Set the Hatena blog URLs separated by commas.  
     ex. `https://XXX.hatenadiary.jp/rss,https://YYY.hatenablog.com/rss`
 
@@ -94,7 +94,7 @@ npm run deploy
 
   - Get the data format `RSS2.0` and send it to Slack.
 
-  - Needs: set a script property `RSS2_URLS` if you want to get information using this function
+  - Needs: set a script property `RSS2_URLS`  
     Set the URLs separated by commas.  
     ex. `https://XXX.com/rss,https://YYY.jp/rss`
 
