@@ -3,6 +3,7 @@ import {
   HatenaBlogApp,
   HatenaBookmarkApp,
   ITmediaApp,
+  QiitaApp,
   RSS2App,
   SecurityNextApp,
   TheHackerNewsApp,
@@ -14,6 +15,7 @@ const getAppList = (): BaseApp[] => {
     new HatenaBlogApp(),
     new HatenaBookmarkApp(),
     new ITmediaApp(),
+    new QiitaApp(),
     new RSS2App(),
     new SecurityNextApp(),
     new TheHackerNewsApp(),
@@ -55,6 +57,12 @@ export const execSecurityNext = (): void => {
 
 export const execITmedia = (): void => {
   const app = new ITmediaApp();
+  app.create();
+  app.upload();
+};
+
+export const execQiita = (): void => {
+  const app = new QiitaApp();
   app.create();
   app.upload();
 };
