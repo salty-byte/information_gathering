@@ -12,32 +12,23 @@ export class HatenaBookmarkApp extends BaseApp {
     this.securityTags = ['セキュリティ', 'security'];
   }
 
-  fetchData(url: string): AppData[] {
-    const response = UrlFetchApp.fetch(url);
-    const regexp = /<item[^>]*>([\s\S]*?)<\/item>/gi;
-    let results = response.getContentText().match(regexp);
-    if (!results) {
-      return [];
-    }
+  protected getDateRegExp(): RegExp {
+    return /<dc:date>([\s\S]+?)<\/dc:date>/;
+  }
 
-    // get item limit
-    results = results.slice(0, this.itemLimit);
+  protected filterItem(text: string): boolean {
+    return this.hasSecurityTag(text);
+  }
 
-    const dataList: AppData[] = [];
-    for (const text of results) {
-      if (!this.hasSecurityTag(text)) {
-        continue;
-      }
-      const title = regExpOr(text, /<title>([\s\S]+?)<\/title>/, 1);
-      const url = regExpOr(text, /<link>([\s\S]+?)<\/link>/, 1);
-      const date = regExpOr(text, /<dc:date>([\s\S]+?)<\/dc:date>/, 1);
-      dataList.push({
-        date,
-        title: decodeEntityReferences(title),
-        url,
-      });
-    }
-    return dataList;
+  protected findAppData(text: string): AppData {
+    const title = regExpOr(text, this.getTitleRegExp(), 1);
+    const url = regExpOr(text, this.getURLRegExp(), 1);
+    const date = regExpOr(text, this.getDateRegExp(), 1);
+    return {
+      date,
+      title: decodeEntityReferences(title),
+      url,
+    };
   }
 
   private hasSecurityTag(text = '') {
