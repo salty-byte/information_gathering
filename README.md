@@ -48,6 +48,8 @@ npm run deploy
 - execITmedia
 - execTheHackerNews
 - execUCCard
+- execQiita
+- execRSS2
 
 ### Details: functions in Apps Script
 
@@ -89,6 +91,14 @@ npm run deploy
 - execUCCard
 
   - Get the data about `UCカード 重要なお知らせ` and send it to Slack.
+
+- execQiita
+
+  - Get the data about `Qiita` and send it to Slack.
+
+  - Needs: set a script property `QIITA_URLS`  
+    Set the Hatena blog URLs separated by commas.  
+    ex. `https://qiita.com/tags/rails/feed,https://qiita.com/tags/security/feed`
 
 - execRSS2
 
