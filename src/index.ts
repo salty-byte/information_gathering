@@ -10,6 +10,9 @@ global.uploadInfoAll = () => main.uploadInfoAll();
 global.execHatenaBlog = () => main.execHatenaBlog();
 global.execHatenaBookmark = () => main.execHatenaBookmark();
 global.execITmedia = () => main.execITmedia();
+global.execQiita = () => main.execQiita();
 global.execSecurityNext = () => main.execSecurityNext();
 global.execTheHackerNews = () => main.execTheHackerNews();
 global.execUCCard = () => main.execUCCard();
+
+global.execRSS2 = () => main.execRSS2();

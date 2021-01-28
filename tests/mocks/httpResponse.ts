@@ -199,6 +199,98 @@ const xmlArray = [
         </channel>
       </rss>`,
   },
+  {
+    startUrl: 'https://example.com/qiita-1/',
+    content: `<?xml version="1.0" encoding="UTF-8"?>
+      <feed xml:lang="ja-JP" xmlns="http://www.w3.org/2005/Atom">
+        <title>test1タグが付けられた新着記事</title>
+        <description>test1タグが付けられた新着記事</description>
+        <updated>2021-01-23T01:00:00+09:00</updated>
+        <link>https://example.com/qiita/tags/test1</link>
+        <entry>
+          <id>tag:test1</id>
+          <published>2021-01-23T00:00:00+09:00</published>
+          <updated>2021-01-23T01:00:00+09:00</updated>
+          <link rel="alternate" type="text/html" href="https://example.com/qiita-1/2" />
+          <url>https://example.com/qiita-1/2</url>
+          <title>タイトル２</title>
+          <content type="html">内容２</content>
+        </entry>
+        <entry>
+          <id>tag:test1</id>
+          <published>2021-01-22T00:00:00+09:00</published>
+          <updated>2021-01-22T01:00:00+09:00</updated>
+          <link rel="alternate" type="text/html" href="https://example.com/qiita-1/1" />
+          <url>https://example.com/qiita-1/1</url>
+          <title>タイトル１</title>
+          <content type="html">内容１</content>
+        </entry>
+      </feed>`,
+  },
+  {
+    startUrl: 'https://example.com/qiita-2/',
+    content: `<?xml version="1.0" encoding="UTF-8"?>
+      <feed xml:lang="ja-JP" xmlns="http://www.w3.org/2005/Atom">
+        <title>test2タグが付けられた新着記事</title>
+        <description>test2タグが付けられた新着記事</description>
+        <updated>2021-01-20T01:00:00+09:00</updated>
+        <link>https://example.com/qiita/tags/test2</link>
+        <entry>
+          <id>tag:test2</id>
+          <published>2021-01-20T00:00:00+09:00</published>
+          <updated>2021-01-20T01:00:00+09:00</updated>
+          <link rel="alternate" type="text/html" href="https://example.com/qiita-2/1" />
+          <url>https://example.com/qiita-2/1</url>
+          <title>タイトル３</title>
+          <content type="html">内容３</content>
+        </entry>
+      </feed>`,
+  },
+  {
+    startUrl: 'https://example.com/rss2-1/',
+    content: `<?xml version="1.0"?>
+      <rss version="2.0">
+        <channel>
+          <title>サイト１</title>
+          <link>https://example.com/</link>
+          <description>説明</description>
+          <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0900</lastBuildDate>
+          <item>
+            <title>タイトル１</title>
+            <link>https://example.com/rss2-1/1</link>
+            <description>説明１</description>
+            <pubDate>Mon, 28 Dec 2020 00:00:00 +0900</pubDate>
+            <category>test1</category>
+          </item>
+          <item>
+            <title>タイトル２</title>
+            <link>https://example.com/rss2-1/2</link>
+            <description>説明２</description>
+            <pubDate>Sun, 27 Dec 2020 00:00:00 +0900</pubDate>
+            <category>test2</category>
+          </item>
+        </channel>
+      </rss>`,
+  },
+  {
+    startUrl: 'https://example.com/rss2-2/',
+    content: `<?xml version="1.0"?>
+      <rss version="2.0">
+        <channel>
+          <title>サイト２</title>
+          <link>https://example.com/</link>
+          <description>説明</description>
+          <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0900</lastBuildDate>
+          <item>
+            <title>タイトル３</title>
+            <link>https://example.com/rss2-2/1</link>
+            <description>説明１</description>
+            <pubDate>Mon, 28 Dec 2020 00:00:00 +0900</pubDate>
+            <category>test1</category>
+          </item>
+        </channel>
+      </rss>`,
+  },
 ];
 
 export class MockHTTPResponse {

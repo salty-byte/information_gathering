@@ -48,6 +48,8 @@ npm run deploy
 - execITmedia
 - execTheHackerNews
 - execUCCard
+- execQiita
+- execRSS2
 
 ### Details: functions in Apps Script
 
@@ -70,7 +72,7 @@ npm run deploy
 
   - Get the data about `はてなブログ` and send it to Slack.
 
-  - Needs: set a script property `HATENA_BLOG_URLS` if you want to get information about Hatena blogs  
+  - Needs: set a script property `HATENA_BLOG_URLS`  
     Set the Hatena blog URLs separated by commas.  
     ex. `https://XXX.hatenadiary.jp/rss,https://YYY.hatenablog.com/rss`
 
@@ -89,6 +91,22 @@ npm run deploy
 - execUCCard
 
   - Get the data about `UCカード 重要なお知らせ` and send it to Slack.
+
+- execQiita
+
+  - Get the data about `Qiita` and send it to Slack.
+
+  - Needs: set a script property `QIITA_URLS`  
+    Set the Hatena blog URLs separated by commas.  
+    ex. `https://qiita.com/tags/rails/feed,https://qiita.com/tags/security/feed`
+
+- execRSS2
+
+  - Get the data format `RSS2.0` and send it to Slack.
+
+  - Needs: set a script property `RSS2_URLS`  
+    Set the URLs separated by commas.  
+    ex. `https://XXX.com/rss,https://YYY.jp/rss`
 
 ## Test
 

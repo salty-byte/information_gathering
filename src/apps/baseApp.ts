@@ -8,10 +8,12 @@ export abstract class BaseApp {
 
   protected name: string;
   protected urls: string[];
+  protected itemLimit = 5;
 
-  constructor(name = 'base', urls: string | string[]) {
+  constructor(name = 'base', urls: string | string[], itemLimit = 5) {
     this.name = name;
     this.urls = Array.isArray(urls) ? urls : [urls];
+    this.itemLimit = itemLimit;
   }
 
   protected getSheet(
@@ -53,20 +55,43 @@ export abstract class BaseApp {
 
   protected fetchData(url: string): AppData[] {
     const response = UrlFetchApp.fetch(url);
-    const regexp = /<item>([\s\S]*?)<\/item>/gi;
-    const results = response.getContentText().match(regexp);
-    if (!results) {
-      return [];
-    }
+    return this.findItems(response.getContentText())
+      .slice(0, this.itemLimit)
+      .filter((v) => this.filterItem(v))
+      .map((v) => this.findAppData(v));
+  }
 
-    const data: AppData[] = [];
-    for (const text of results) {
-      const title = regExpOr(text, /<title>([\s\S]+?)<\/title>/, 1);
-      const url = regExpOr(text, /<link>([\s\S]+?)<\/link>/, 1);
-      const date = regExpOr(text, /<pubDate>([\s\S]+?)<\/pubDate>/, 1);
-      data.push({ date, title, url });
-    }
-    return data;
+  protected findItems(text: string): RegExpMatchArray {
+    const regexp = this.getItemsRegExp();
+    return text.match(regexp) || [];
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  protected filterItem(text: string): boolean {
+    return true;
+  }
+
+  protected findAppData(text: string): AppData {
+    const title = regExpOr(text, this.getTitleRegExp(), 1);
+    const url = regExpOr(text, this.getURLRegExp(), 1);
+    const date = regExpOr(text, this.getDateRegExp(), 1);
+    return { date, title, url };
+  }
+
+  protected getItemsRegExp(): RegExp {
+    return /<item[^>]*>([\s\S]*?)<\/item>/gi;
+  }
+
+  protected getTitleRegExp(): RegExp {
+    return /<title>([\s\S]+?)<\/title>/;
+  }
+
+  protected getURLRegExp(): RegExp {
+    return /<link>([\s\S]+?)<\/link>/;
+  }
+
+  protected getDateRegExp(): RegExp {
+    return /<pubDate>([\s\S]+?)<\/pubDate>/;
   }
 
   protected removeDuplicate(dataList: AppData[]): AppData[] {

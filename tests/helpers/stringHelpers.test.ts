@@ -1,6 +1,7 @@
 import {
   decodeEntityReferences,
   regExpOr,
+  splitAndTrim,
 } from '../../src/helpers/stringHelpers';
 
 describe('stringHelpers test', () => {
@@ -48,6 +49,46 @@ describe('stringHelpers test', () => {
 
       const r2 = regExpOr(xmlText, exp, 2, 'not suitable');
       expect(r2).toBe('not suitable');
+    });
+  });
+
+  describe('splitAndTrim test', () => {
+    describe('using the string separator', () => {
+      test('returns the separated strings', async () => {
+        const r1 = splitAndTrim(
+          'https://exmaple.com/1,https://exmaple.com/2',
+          ','
+        );
+        expect(r1).toEqual(['https://exmaple.com/1', 'https://exmaple.com/2']);
+
+        const r2 = splitAndTrim(':aaa:bbb::ccc:1234567890:', ':');
+        expect(r2).toEqual(['aaa', 'bbb', 'ccc', '1234567890']);
+
+        const r3 = splitAndTrim('aaa,bbb,ccc,1234567890', ':');
+        expect(r3).toEqual(['aaa,bbb,ccc,1234567890']);
+
+        const r4 = splitAndTrim('&&&&', '&');
+        expect(r4).toEqual([]);
+      });
+    });
+
+    describe('using the RegExp separator', () => {
+      test('returns the separated strings', async () => {
+        const r1 = splitAndTrim(
+          'https://exmaple.com/1,https://exmaple.com/2',
+          /,/
+        );
+        expect(r1).toEqual(['https://exmaple.com/1', 'https://exmaple.com/2']);
+
+        const r2 = splitAndTrim('"aaa!123#bbb$456%', /[^a-z0-9]+/);
+        expect(r2).toEqual(['aaa', '123', 'bbb', '456']);
+
+        const r3 = splitAndTrim('aaa,bbb,ccc,1234567890', /:/);
+        expect(r3).toEqual(['aaa,bbb,ccc,1234567890']);
+
+        const r4 = splitAndTrim('aaabbbccc', /[a-z]+/);
+        expect(r4).toEqual([]);
+      });
     });
   });
 });
