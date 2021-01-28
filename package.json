@@ -1,6 +1,6 @@
 {
   "name": "information_gathering",
-  "version": "1.2.0a",
+  "version": "1.2.0",
   "description": "gathering information: e.g. security news, twitter",
   "main": "index.js",
   "scripts": {
