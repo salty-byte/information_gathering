@@ -1,5 +1,5 @@
 import { mockSpreadSheet } from '../setupMock';
-import { HatenaBlogApp } from '../../src/apps/hatenaBlog';
+import { HatenaBlogApp } from '../../src/apps/hatenaBlogApp';
 import * as upload from '../../src/upload';
 
 describe('HatenaBlogApp test', () => {

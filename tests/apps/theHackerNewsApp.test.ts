@@ -2,7 +2,7 @@ import { mockSpreadSheet } from '../setupMock';
 import { TheHackerNewsApp } from '../../src/apps/theHackerNewsApp';
 import * as upload from '../../src/upload';
 
-describe('TheHackerNews test', () => {
+describe('TheHackerNewsApp test', () => {
   const APP_NAME = 'TheHackerNews';
   let postSpy: jest.SpyInstance<void, [message?: string]>;
 

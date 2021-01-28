@@ -1,5 +1,5 @@
 import { BaseApp } from './baseApp';
-import { regExpOr, splitAndTrim } from '../helpers/stringHelpers';
+import { splitAndTrim } from '../helpers/stringHelpers';
 
 export class QiitaApp extends BaseApp {
   constructor() {
@@ -13,28 +13,15 @@ export class QiitaApp extends BaseApp {
     return splitAndTrim(urlStr, ',');
   }
 
-  fetchData(url: string): AppData[] {
-    const response = UrlFetchApp.fetch(url);
-    const regexp = /<entry>([\s\S]*?)<\/entry>/gi;
-    let results = response.getContentText().match(regexp);
-    if (!results) {
-      return [];
-    }
+  protected getItemsRegExp(): RegExp {
+    return /<entry>([\s\S]*?)<\/entry>/gi;
+  }
 
-    // get item limit
-    results = results.slice(0, this.itemLimit);
+  protected getURLRegExp(): RegExp {
+    return /<url>([\s\S]+?)<\/url>/;
+  }
 
-    const dataList: AppData[] = [];
-    for (const text of results) {
-      const title = regExpOr(text, /<title>([\s\S]+?)<\/title>/, 1);
-      const url = regExpOr(text, /<url>([\s\S]+?)<\/url>/, 1);
-      const date = regExpOr(text, /<published>([\s\S]+?)<\/published>/, 1);
-      dataList.push({
-        date,
-        title,
-        url,
-      });
-    }
-    return dataList;
+  protected getDateRegExp(): RegExp {
+    return /<published>([\s\S]+?)<\/published>/;
   }
 }

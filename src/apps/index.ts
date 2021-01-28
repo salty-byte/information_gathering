@@ -1,6 +1,6 @@
 export { BaseApp } from './baseApp';
-export { HatenaBlogApp } from './hatenaBlog';
-export { HatenaBookmarkApp } from './hatenaBookmark';
+export { HatenaBlogApp } from './hatenaBlogApp';
+export { HatenaBookmarkApp } from './hatenaBookmarkApp';
 export { ITmediaApp } from './itmediaApp';
 export { QiitaApp } from './qiitaApp';
 export { RSS2App } from './rss2App';
