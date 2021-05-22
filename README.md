@@ -8,7 +8,8 @@ Developed by [clasp](https://github.com/google/clasp).
 
 ## Requirement
 
-- Nodejs: 14.x
+- Node.js: 14.x
+- npm: 6.x
 
 ## Install
 
@@ -16,12 +17,18 @@ Developed by [clasp](https://github.com/google/clasp).
 npm install
 ```
 
+as needed: [clasp](https://github.com/google/clasp)
+
+```
+npm install -g @google/clasp
+```
+
 ## Usage
 
 **Sign in to Google Apps:**
 
 ```shell
-npx clasp login
+clasp login
 ```
 
 Then enable the Google Apps Script API: https://script.google.com/home/usersettings
@@ -29,7 +36,7 @@ Then enable the Google Apps Script API: https://script.google.com/home/usersetti
 **Create Sheet:**
 
 ```shell
-npx clasp create --type sheets --rootDir ./dist
+clasp create --type sheets --rootDir ./dist
 ```
 
 **Deploy:**
