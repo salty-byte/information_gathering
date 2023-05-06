@@ -8,8 +8,8 @@ Developed by [clasp](https://github.com/google/clasp).
 
 ## Requirement
 
-- Node.js: 14.x
-- npm: 6.x
+- Node.js: 18.x
+- npm: 9.x
 
 ## Install
 

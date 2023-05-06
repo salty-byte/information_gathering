@@ -8,7 +8,7 @@ export class UCCardApp extends BaseApp {
     super('UCCard', `${UCCardApp.BASE_URL}/important/`);
   }
 
-  protected findItems(text: string): RegExpMatchArray {
+  protected findItems(text: string): Array<string> {
     const dlRegexp = /<dl[^>]*>([\s\S]*?)<\/dl>/gi;
     const dlResults = text.match(dlRegexp);
     if (!dlResults) {
