@@ -61,7 +61,7 @@ export abstract class BaseApp {
       .map((v) => this.findAppData(v));
   }
 
-  protected findItems(text: string): RegExpMatchArray {
+  protected findItems(text: string): Array<string> {
     const regexp = this.getItemsRegExp();
     return text.match(regexp) || [];
   }
